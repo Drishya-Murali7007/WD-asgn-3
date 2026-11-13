@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inventory Manager</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="wrap">
+    <header><div><p class="eyebrow">WEB DEV III · LAB 3</p><h1>Inventory Manager</h1><p class="muted">Product catalogue and stock control</p></div><button id="refresh" class="secondary">Refresh data</button></header>
+    <section class="stats">
+      <article class="stat"><span>Total products</span><strong id="total-products">—</strong></article>
+      <article class="stat"><span>Low-stock items</span><strong id="low-count">—</strong></article>
+      <article class="stat"><span>Categories</span><strong id="category-count">—</strong></article>
+    </section>
+    <section class="panel">
+      <h2>Add product</h2>
+      <form id="product-form" class="form-grid">
+        <div><label>Product name</label><input id="name" required minlength="2" placeholder="Wireless Mouse"></div>
+        <div><label>SKU</label><input id="sku" required placeholder="ELEC-MOU-01"></div>
+        <div><label>Category</label><input id="category" required placeholder="Electronics"></div>
+        <div><label>Price</label><input id="price" type="number" min="0" step="0.01" required></div>
+        <div><label>Quantity</label><input id="quantity" type="number" min="0" step="1" required></div>
+        <div><label>Reorder level</label><input id="reorderLevel" type="number" min="0" step="1" value="10"></div>
+        <div class="wide"><label>Supplier</label><input id="supplier" placeholder="Supplier name"></div>
+        <button class="primary wide">Create product</button>
+      </form>
+      <p id="form-message" class="message"></p>
+    </section>
+    <section class="panel">
+      <div class="section-head"><h2>Product catalogue</h2><button id="low-stock" class="secondary">Show low stock</button></div>
+      <div class="filters">
+        <input id="search" placeholder="Search name, SKU or supplier">
+        <input id="filter-category" placeholder="Category">
+        <select id="sort"><option value="createdAt:desc">Newest</option><option value="name:asc">Name A–Z</option><option value="price:asc">Price low–high</option><option value="price:desc">Price high–low</option><option value="quantity:asc">Stock low–high</option></select>
+        <button id="apply" class="primary">Apply</button>
+      </div>
+      <p id="catalogue-message" class="message"></p>
+      <div class="table-scroll"><table><thead><tr><th>Product</th><th>SKU</th><th>Category</th><th>Price</th><th>Qty</th><th>Stock value</th><th>Actions</th></tr></thead><tbody id="products"></tbody></table></div>
+      <div class="pagination"><button id="prev" class="secondary">Previous</button><span id="page-info">Page 1</span><button id="next" class="secondary">Next</button></div>
+    </section>
+    <section class="panel"><div class="section-head"><h2>Category summary</h2><button id="summary-refresh" class="secondary">Refresh summary</button></div><div id="summary" class="summary-grid"></div></section>
+    <footer>MongoDB · Express · Mongoose · REST API</footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
